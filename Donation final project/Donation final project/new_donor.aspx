@@ -1,15 +1,20 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="new_donor.aspx.vb" Inherits="Donation_final_project.new_donor" %>
+﻿<%@ Page Title="New Donor" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="form_container">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+        <div class="form">
+            <h1>
+                Create New Donor
+            </h1>
+            <div class="row">
+                <asp:Label CssClass="col-sm-3 col-form-label" ID="lblFirstName" runat="server" Text="First Name:"></asp:Label>
+                <div class="col-sm-9">
+                    <asp:TextBox CssClass="form-control textbox" ID="TextBox1" runat="server"></asp:TextBox>
+                </div>
+                <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblErrorMessage" runat="server" Text="Please enter their First Name"></asp:Label>
+            </div>
         </div>
-    </form>
-</body>
-</html>
+    </div>
+</asp:Content>
+

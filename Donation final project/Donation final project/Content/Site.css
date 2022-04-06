@@ -37,6 +37,39 @@ textarea {
     color: white;
     text-decoration: underline;
 }
+
+.form_container {
+    display: flex;
+    justify-content: center;
+}
+
+.form h1 {
+    padding: 0px;
+    margin: 0px !important;
+}
+
+.form {
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: 30px;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form h1 {
+    text-align: center
+}
+
+.error-message {
+    color: red;
+}
+.textbox {
+    max-width: none;
+    width: 100%;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {

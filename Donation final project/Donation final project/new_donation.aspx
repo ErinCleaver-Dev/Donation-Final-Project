@@ -1,15 +1,6 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="new_donation.aspx.vb" Inherits="Donation_final_project.new_donation" %>
+﻿<%@ Page Title="New Donation" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+
