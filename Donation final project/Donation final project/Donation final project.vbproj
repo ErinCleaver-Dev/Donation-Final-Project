@@ -46,6 +46,7 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -143,8 +144,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="donations.aspx" />
-    <Content Include="donors.aspx" />
+    <Content Include="Donations.aspx" />
+    <Content Include="Donors.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -157,9 +158,9 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="new_donation.aspx" />
-    <Content Include="new_donor.aspx" />
-    <Content Include="reports.aspx" />
+    <Content Include="New_donor.aspx" />
+    <Content Include="New_donation.aspx" />
+    <Content Include="Reports.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -201,18 +202,20 @@
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="donations.aspx.designer.vb">
-      <DependentUpon>donations.aspx</DependentUpon>
+    <Compile Include="Donations.aspx.designer.vb">
+      <DependentUpon>Donations.aspx</DependentUpon>
     </Compile>
-    <Compile Include="donations.aspx.vb">
-      <DependentUpon>donations.aspx</DependentUpon>
+    <Compile Include="Donations.aspx.vb">
+      <DependentUpon>Donations.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="donors.aspx.designer.vb">
-      <DependentUpon>donors.aspx</DependentUpon>
+    <Compile Include="Donations.vb" />
+    <Compile Include="Donor.vb" />
+    <Compile Include="Donors.aspx.designer.vb">
+      <DependentUpon>Donors.aspx</DependentUpon>
     </Compile>
-    <Compile Include="donors.aspx.vb">
-      <DependentUpon>donors.aspx</DependentUpon>
+    <Compile Include="Donors.aspx.vb">
+      <DependentUpon>Donors.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Global.asax.vb">
@@ -237,25 +240,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="new_donation.aspx.designer.vb">
-      <DependentUpon>new_donation.aspx</DependentUpon>
+    <Compile Include="New_donor.aspx.designer.vb">
+      <DependentUpon>New_donor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="new_donation.aspx.vb">
-      <DependentUpon>new_donation.aspx</DependentUpon>
+    <Compile Include="New_donor.aspx.vb">
+      <DependentUpon>New_donor.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="new_donor.aspx.designer.vb">
-      <DependentUpon>new_donor.aspx</DependentUpon>
+    <Compile Include="New_donation.aspx.designer.vb">
+      <DependentUpon>New_donation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="new_donor.aspx.vb">
-      <DependentUpon>new_donor.aspx</DependentUpon>
+    <Compile Include="New_donation.aspx.vb">
+      <DependentUpon>New_donation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="reports.aspx.designer.vb">
-      <DependentUpon>reports.aspx</DependentUpon>
+    <Compile Include="Reports.aspx.designer.vb">
+      <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="reports.aspx.vb">
-      <DependentUpon>reports.aspx</DependentUpon>
+    <Compile Include="Reports.aspx.vb">
+      <DependentUpon>Reports.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">

@@ -1,4 +1,4 @@
-﻿Public Class new_donation
+﻿Public Class New_donation
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
