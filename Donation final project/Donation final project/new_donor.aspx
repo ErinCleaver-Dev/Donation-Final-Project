@@ -8,24 +8,11 @@
                 Create New Donor
             </h1>
             <div class="row pb-2">
-                <asp:Label CssClass="col-sm-3 col-form-label" ID="lblFirstName" runat="server" Text="First Name:"></asp:Label>
+                <asp:Label CssClass="col-sm-3 col-form-label" ID="lblName" runat="server" Text="Name:"></asp:Label>
                 <div class="col-sm-9">
-                    <asp:TextBox CssClass="form-control textbox" ID="txtFirstName" runat="server"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control textbox" ID="txtName" runat="server"></asp:TextBox>
                 </div>
-                <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblerrorFirstName" runat="server" Text="Please enter their First Name"></asp:Label>
-            </div>
-            <div class="row pb-2">
-                <asp:Label CssClass="col-sm-3 col-form-label" ID="Label1" runat="server" Text="Last Name:"></asp:Label>
-                <div class="col-sm-9">
-                    <asp:TextBox CssClass="form-control textbox" ID="txtLastName" runat="server"></asp:TextBox>
-                </div>
-                <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblerrorLastName" runat="server" Text="Please enter their Last Name Name"></asp:Label>
-            </div>
-            <div class="row pb-2">
-                <asp:Label CssClass="col-sm-3 col-form-label" ID="Label3" runat="server" Text="Business Name:"></asp:Label>
-                <div class="col-sm-9">
-                    <asp:TextBox CssClass="form-control textbox" ID="txtBusinessName" runat="server"></asp:TextBox>
-                </div>
+                <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblerrorName" runat="server" Text="Please enter their full name, organization  name, fondation name, or business name"></asp:Label>
             </div>
             <div class="row pb-2">
                 <asp:Label CssClass="col-sm-3 col-form-label" ID="Label5" runat="server" Text="Phone number:"></asp:Label>
@@ -50,7 +37,7 @@
                 <asp:ListItem>Business</asp:ListItem>
                 <asp:ListItem>Person</asp:ListItem>
                 <asp:ListItem>Organization</asp:ListItem>
-                <asp:ListItem>Fundation</asp:ListItem>
+                <asp:ListItem>Foundation</asp:ListItem>
             </asp:DropDownList>
             <div class="center-button">
                 <asp:Button CssClass="btn btn-primary mt-2 submit_button" ID="bntAddDonor" runat="server" Text="Add Donor"/>

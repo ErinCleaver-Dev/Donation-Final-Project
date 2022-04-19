@@ -14,76 +14,31 @@ Option Explicit On
 Partial Public Class New_Donor
 
     '''<summary>
-    '''lblFirstName control.
+    '''lblName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblFirstName As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblName As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtFirstName control.
+    '''txtName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtFirstName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''lblerrorFirstName control.
+    '''lblerrorName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblerrorFirstName As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Label1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtLastName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtLastName As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''lblerrorLastName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblerrorLastName As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Label3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtBusinessName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtBusinessName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblerrorName As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Label5 control.

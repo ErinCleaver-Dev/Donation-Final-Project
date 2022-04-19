@@ -12,25 +12,16 @@ Public Class DonorQueries
 
     'Adds a Donor into the SQL Database, The only required values are first and last name.
     Function AddDonor(ByVal donor As Dictionary(Of String, String))
-        If validation.validateString(donor.Item("firstName")) And validation.validateString(donor.Item("lastName")) Then
+        If validation.validateString(donor.Item("name")) Then
             Try
                 'Opens the Connection to the Donors part of the database
                 databaseConnection.Open()
                 'Query use to insert a new donor.
-                databaseQuery = "INSERT INTO Donors (FirstName, LastName, BusinessName, PhoneNumber, Address, email, type) VALUES(@firstName, @lastName, @businessName, @phoneNumber, @address, @email, @type)"
+                databaseQuery = "INSERT INTO Donors (name, PhoneNumber, Address, email, type) VALUES(@name, @phoneNumber, @address, @email, @type)"
                 'Used to create a new SQL command and send it to the database.
                 Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
-
-                    'Will always send a first and last name.
-                    command.Parameters.Add("@firstName", SqlDbType.NChar).Value = donor.Item("firstName")
-                    command.Parameters.Add("@lastName", SqlDbType.NChar).Value = donor.Item("lastName")
-
-                    'You need multiple if statements.
-                    If donor.Item("businessName") <> "" Then
-                        command.Parameters.Add("@businessName", SqlDbType.Text).Value = donor.Item("businessName")
-                    Else
-                        command.Parameters.Add("@businessName", SqlDbType.Text).Value = DBNull.Value
-                    End If
+                    'Will always be a name added to the database
+                    command.Parameters.Add("@name", SqlDbType.NChar).Value = donor.Item("name")
                     If donor.Item("phoneNumber") <> "" Then
                         command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = donor.Item("phoneNumber")
                     Else
@@ -53,8 +44,6 @@ Public Class DonorQueries
                     Else
                         command.Parameters.Add("@type", SqlDbType.NChar).Value = DBNull.Value
                     End If
-
-
                     command.ExecuteNonQuery()
                 End Using
                 databaseConnection.Close()
@@ -73,13 +62,22 @@ Public Class DonorQueries
     End Function
 
 
-    Function getDonors(ByVal numberPerPage As Integer, ByVal pageNumber As Integer, ByVal searchTerm As String)
+    Function getDonors(Optional ByVal searchTerm As String = "")
         Try
-            Dim donorList As New Dictionary(Of Integer, Donor)
+            'Opens the database connection
+            databaseConnection.Open()
+            Dim dataTable As New DataTable()
+            databaseQuery = "Select * Donors"
+            Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
+                Using sqlDataAdapter As New SqlClient.SqlDataAdapter()
+                    sqlDataAdapter.SelectCommand = command
+                    sqlDataAdapter.Fill(dataTable)
+                End Using
+            End Using
 
-
-
-            Return donorList
+            Return dataTable
+            'Closes the database connection
+            databaseConnection.Close()
         Catch ex As Exception
             errorMessage = "Error Message: " + ex.Message
             Return False

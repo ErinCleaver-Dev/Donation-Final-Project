@@ -12,27 +12,21 @@ Public Class New_Donor
     Protected Sub bntAddDonor_Click(sender As Object, e As EventArgs) Handles bntAddDonor.Click
 
         ' Will test to make sure that values are entered into the first and last name fields.  
-        If txtFirstName.Text = "" Or txtLastName.Text = "" Then
+        If txtName.Text = "" Then
             'Displays the error message for first name or last name if the fields are empty.  These are requied fields.  
-            lblerrorFirstName.Style.Add("border-color", "red")
-            lblerrorFirstName.Style.Add("border-color", "red")
+            txtName.Style.Add("border-color", "red")
 
-            lblerrorFirstName.Visible = txtFirstName.Text = ""
-            lblerrorLastName.Visible = txtLastName.Text = ""
+            'Changes the text field to visable 
+            lblerrorName.Visible = txtName.Text = ""
         Else
             'Sets the error message to not be visible
-            lblerrorFirstName.Visible = False
-            lblerrorLastName.Visible = False
+            lblerrorName.Visible = False
 
             'Used to update the boarder color of the css
-            lblerrorFirstName.Style.Add("border-color", "black")
-            lblerrorFirstName.Style.Add("border-color", "black")
-
+            txtName.Style.Add("border-color", "black")
 
             'Creates a new donor to be added into the database
-            Dim donor As New Donor(txtFirstName.Text,
-                                   txtLastName.Text,
-                                   txtBusinessName.Text,
+            Dim donor As New Donor(txtName.Text,
                                    txtPhoneNumber.Text,
                                    txtAddress.Text,
                                    txtEmail.Text,
@@ -49,10 +43,7 @@ Public Class New_Donor
     Protected Sub bntYes_Click(sender As Object, e As EventArgs) Handles bntYes.Click
 
         'Resets the form to default values.
-        txtFirstName.Text = ""
-        txtFirstName.Text = ""
-        txtLastName.Text = ""
-        txtBusinessName.Text = ""
+        txtName.Text = ""
         txtPhoneNumber.Text = ""
         txtAddress.Text = ""
         txtEmail.Text = ""

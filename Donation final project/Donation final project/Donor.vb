@@ -3,18 +3,14 @@
 Public Class Donor
     Private donorInformation As New Dictionary(Of String, String)
 
-    Public Sub New(ByVal firstName As String,
-                      ByVal lastName As String,
-                      Optional ByVal businessName As String = "",
+    Public Sub New(ByVal name As String,
                       Optional ByVal phoneNumber As String = "",
                       Optional ByVal address As String = "",
                       Optional ByVal email As String = "",
                       Optional ByVal type As String = "")
 
         Try
-            donorInformation.Add("firstName", firstName)
-            donorInformation.Add("lastName", lastName)
-            donorInformation.Add("businessName", businessName)
+            donorInformation.Add("name", name)
             donorInformation.Add("phoneNumber", phoneNumber)
             donorInformation.Add("address", address)
             donorInformation.Add("email", email)
