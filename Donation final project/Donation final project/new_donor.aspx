@@ -30,7 +30,7 @@
             <div class="row pb-2">
                 <asp:Label CssClass="col-sm-3 col-form-label" ID="Label5" runat="server" Text="Phone number:"></asp:Label>
                 <div class="col-sm-9">
-                    <asp:TextBox CssClass="form-control textbox" ID="txtPhoneNumber" runat="server"></asp:TextBox>
+                    <asp:TextBox type="phone" CssClass="form-control textbox" ID="txtPhoneNumber" runat="server"></asp:TextBox>
                 </div>
             </div>
             <div class="row pb-2">
@@ -42,11 +42,11 @@
             <div class="row pb-2">
                 <asp:Label CssClass="col-sm-3 col-form-label" ID="Label8" runat="server" Text="Email:"></asp:Label>
                 <div class="col-sm-9">
-                    <asp:TextBox CssClass="form-control textbox" ID="txtEmail" runat="server"></asp:TextBox>
+                    <asp:TextBox type="email" CssClass="form-control textbox" ID="txtEmail" runat="server"></asp:TextBox>
                 </div>
             </div>
             <asp:Label CssClass="col-form-label pb-2 text-center" ID="Label9" runat="server" Text="Donor Type"></asp:Label>
-            <asp:DropDownList class="form-control item_list pb-2" ID="type" runat="server">
+            <asp:DropDownList class="form-control item_list pb-2" ID="seletType" runat="server">
                 <asp:ListItem>Business</asp:ListItem>
                 <asp:ListItem>Person</asp:ListItem>
                 <asp:ListItem>Organization</asp:ListItem>
@@ -56,7 +56,12 @@
                 <asp:Button CssClass="btn btn-primary mt-2 submit_button" ID="bntAddDonor" runat="server" Text="Add Donor"/>
             </div>
             <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblFailedToSubmit" runat="server" Text="Testing button"></asp:Label>
-
+        </div>
+        <div id="displayMessage" class="displayMessage" runat="server">
+            <p>Donor Sucessfully Added to data base.</p>
+            <p>Would you like to add anothe donor?</p>
+            <asp:Button CssClass="btn btn-primary button-shadow" ID="bntYes" runat="server" Text="Yes" />
+            <asp:Button CssClass="btn btn-outline-primary mt-2 button-shadow" ID="bntNo" runat="server" Text="No" />
         </div>
     </div>
 </asp:Content>

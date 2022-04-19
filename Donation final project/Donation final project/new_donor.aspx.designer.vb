@@ -149,13 +149,13 @@ Partial Public Class New_Donor
     Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''type control.
+    '''seletType control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents type As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents seletType As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''bntAddDonor control.
@@ -174,4 +174,31 @@ Partial Public Class New_Donor
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblFailedToSubmit As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''displayMessage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents displayMessage As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''bntYes control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents bntYes As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''bntNo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents bntNo As Global.System.Web.UI.WebControls.Button
 End Class

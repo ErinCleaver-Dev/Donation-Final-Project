@@ -209,8 +209,9 @@
       <DependentUpon>Donations.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Donations.vb" />
+    <Compile Include="DonationQueries.vb" />
     <Compile Include="Donor.vb" />
+    <Compile Include="DonorQueries.vb" />
     <Compile Include="Donors.aspx.designer.vb">
       <DependentUpon>Donors.aspx</DependentUpon>
     </Compile>
@@ -268,6 +269,7 @@
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Validation.vb" />
     <Compile Include="ViewSwitcher.ascx.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
