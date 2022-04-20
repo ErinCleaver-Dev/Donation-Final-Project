@@ -112,6 +112,49 @@ textarea {
 .button-shadow {
     box-shadow: 2px 1px 1px #253b6563;
 }
+
+.table_container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.table_formated {
+    border: none;
+}
+
+.table_formated tr th {
+    border-top: none;
+    border-left: none;
+    border-bottom: 2px solid black;
+    border-right: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.table_formated tr td {
+    border-left: none;
+    border-bottom: 1px solid black;
+    border-right: none;
+    text-align: center;
+    min-width: 100px;
+    padding: 5px;
+}
+
+.edit-button {
+    background-color: white;
+    color: #c9c9c9;
+    border: 2px solid #c9c9c9;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.edit-button:hover {
+    background-color: #c9c9c9;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {

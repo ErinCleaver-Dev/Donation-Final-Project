@@ -6,6 +6,8 @@ Public Class DonorQueries
     Dim databaseQuery As String
     Dim errorMessage As String = ""
     Private validation As New Validation
+    Private dataRetrived As Boolean = True
+
     'data is from https://jsonplaceholder.typicode.com/users
 
 
@@ -66,21 +68,27 @@ Public Class DonorQueries
         Try
             'Opens the database connection
             databaseConnection.Open()
-            Dim dataTable As New DataTable()
-            databaseQuery = "Select * Donors"
+            databaseQuery = "Select * From Donors"
+
+            'Used to create a new command to get the information from the donors table in the database
             Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
+                'Used to get a sqlDataAdapter
                 Using sqlDataAdapter As New SqlClient.SqlDataAdapter()
                     sqlDataAdapter.SelectCommand = command
-                    sqlDataAdapter.Fill(dataTable)
+                    Using dataTable As New DataTable
+                        sqlDataAdapter.Fill(dataTable)
+                        dataRetrived = True
+                        databaseConnection.Close()
+                        Return dataTable
+                    End Using
                 End Using
             End Using
-
-            Return dataTable
             'Closes the database connection
-            databaseConnection.Close()
         Catch ex As Exception
             errorMessage = "Error Message: " + ex.Message
+            dataRetrived = False
             Return False
+
         End Try
 
     End Function
@@ -89,5 +97,8 @@ Public Class DonorQueries
         Return errorMessage
     End Function
 
+    Function receivedData()
+        Return dataRetrived
+    End Function
 
 End Class
