@@ -106,19 +106,16 @@ Public Class DonorQueries
 
 
                     command.Parameters.Add("@Id", SqlDbType.Int).Value = id
-
                     command.Parameters.Add("@name", SqlDbType.NChar).Value = donor.Item("name")
                     If donor.Item("phoneNumber") <> "" Then
                         command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = donor.Item("phoneNumber")
                     Else
                         command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = DBNull.Value
-
                     End If
                     If donor.Item("address") <> "" Then
                         command.Parameters.Add("@address", SqlDbType.Text).Value = donor.Item("address")
                     Else
                         command.Parameters.Add("@address", SqlDbType.Text).Value = DBNull.Value
-
                     End If
                     If donor.Item("email") <> "" Then
                         command.Parameters.Add("@email", SqlDbType.Text).Value = donor.Item("email")
@@ -151,7 +148,7 @@ Public Class DonorQueries
         Return errorMessage
     End Function
 
-    Function dataError()
+    Function displayError()
         Return databaseError
     End Function
 

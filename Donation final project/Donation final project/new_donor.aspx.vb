@@ -26,12 +26,11 @@ Public Class New_Donor
             txtName.Style.Add("border-color", "black")
 
             'Creates a new donor to be added into the database
-            Dim donor As New Donor(txtName.Text,
-                                   txtPhoneNumber.Text,
-                                   txtAddress.Text,
-                                   txtEmail.Text,
-                                   seletType.SelectedValue
-                                   )
+            Dim donor As New Donor(txtName.Text.Trim(),
+                                   txtPhoneNumber.Text.Trim(),
+                                   txtAddress.Text.Trim(),
+                                   txtEmail.Text.Trim(),
+                                   seletType.SelectedValue.Trim())
             'Sends the data to the database
             donorQueries.AddDonor(donor.GetDonor())
             displayMessage.Style.Add("display", "flex")

@@ -3,7 +3,11 @@
     <div class="table_container">
          <asp:GridView CssClass="table_formated"  ID="gvDonors" runat="server" AutoGenerateColumns="False" Width="570px">
         <Columns>
-            <asp:BoundField HeaderText="ID" DataField="Id" ReadOnly="True"/>
+           <asp:TemplateField HeaderText="ID">
+                 <ItemTemplate>
+                    <asp:Label ID="lblID" DataField="Id" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Name">
                  <ItemTemplate>
                     <asp:TextBox ID="txtName" DataField="Name" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
@@ -31,7 +35,7 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Button ID="bntUpdate" runat="server" CommandName="update_row" CssClass="edit-button" Text="Update" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="bntUpdate" runat="server" CommandName="update_row" CssClass="edit-button" Text="Update" CommandArgument='<%# Container.DataItemIndex %>' />
                 </ItemTemplate>
             </asp:TemplateField>
          </Columns>

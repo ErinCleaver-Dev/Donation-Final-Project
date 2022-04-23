@@ -5,8 +5,8 @@ Public Class Donors
     Dim donorsQuries As New DonorQueries
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If IsPostBack = False Then
-            If donorsQuries.dataError() = False Then
+        If Not IsPostBack Then
+            If donorsQuries.displayError() = False Then
                 lblErrorMessage.Text = donorsQuries.getErrorMessage
                 lblErrorMessage.Visible = True
             Else
@@ -22,15 +22,21 @@ Public Class Donors
     Protected Sub bntOk_Click(ByVal sender As Object, ByVal e As EventArgs) Handles bntOk.Click
         displayMessage.Style.Add("display", "none")
     End Sub
-    Protected Sub Update_RowCommand(ByVal sender As Object, ByVal e As GridViewCommandEventArgs)
-
+    Protected Sub gvDonors_RowCommand(ByVal sender As Object, ByVal e As GridViewCommandEventArgs) Handles gvDonors.RowCommand
 
         Try
-            If e.CommandName = "update_row" Then
+            If e.CommandName.Equals("update_row") Then
+
+                Dim index As Integer = e.CommandArgument.ToString()
+                Dim txtName As TextBox = gvDonors.Rows(index).FindControl("txtName")
+
+                MessageBox.Show(txtName.Text)
+
                 displayMessage.Style.Add("display", "flex")
+
             End If
 
-            lblErrorMessage.Visible = False
+            'lblErrorMessage.Visible = False
         Catch ex As Exception
             lblErrorMessage.Visible = True
             lblErrorMessage.Text = ex.Message
