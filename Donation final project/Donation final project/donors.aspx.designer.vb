@@ -30,4 +30,22 @@ Partial Public Class Donors
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblErrorMessage As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''displayMessage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents displayMessage As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''bntOk control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents bntOk As Global.System.Web.UI.WebControls.Button
 End Class
