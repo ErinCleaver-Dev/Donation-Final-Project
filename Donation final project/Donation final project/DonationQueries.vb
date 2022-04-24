@@ -1,21 +1,18 @@
 ﻿Imports System.Windows
 
 Public Class DonationQueries
-    Dim databaseConnection As New SqlClient.SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename='|DataDirectory|\Donation_Database.mdf';Integrated Security=True")
-    Dim databaseQuery As String
-    Dim errorMessage As String = ""
-    Private validation As New Validation
-    Private databaseError As Boolean = False
+    Inherits Queries
+    Private databaseConnection As New SqlClient.SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename='|DataDirectory|\Donation_Database.mdf';Integrated Security=True")
+
 
     'data is from https://jsonplaceholder.typicode.com/users
 
-
-
     'Adds a Donation into the SQL Database
-    Sub AddDonation(ByVal donation As Dictionary(Of String, String))
+    Public Overrides Sub Add(ByVal donation As Dictionary(Of String, String))
 
         'Validates that the value is greater then -1
-        If validation.validateCashValue(donation.Item("value")) Then
+        'Has a override of Intger AND Decemical
+        If validation.ValidateNumber(CDec(donation.Item("value"))) Then
             Try
                 'Opens the Connection to the Donation part of the database
                 databaseConnection.Open()
@@ -33,7 +30,7 @@ Public Class DonationQueries
                     command.Parameters.Add("@value", SqlDbType.Decimal).Value = donation.Item("value")
 
                     'Verifiys that their is a value for description and it not it will assign NULL
-                    If validation.validateString(donation.Item("description")) Then
+                    If validation.ValidateString(donation.Item("description")) Then
                         command.Parameters.Add("@description", SqlDbType.Text).Value = donation.Item("description")
                     Else
                         command.Parameters.Add("@description", SqlDbType.Text).Value = DBNull.Value
@@ -73,7 +70,7 @@ Public Class DonationQueries
     End Sub
 
     'Used to get the donation information from the database
-    Function getDontations()
+    Public Overrides Function GetData()
         Try
             'Opens the database connection
             databaseConnection.Open()
@@ -111,8 +108,8 @@ Public Class DonationQueries
         End Try
     End Function
 
-    Sub updateRow(id As Integer, donation_type As String, value As Decimal, Optional description As String = "")
-        If validation.validateString(value) Then
+    Sub UpdateRow(id As Integer, donation_type As String, value As Decimal, Optional description As String = "")
+        If validation.ValidateNumber(value) Then
             Try
                 databaseConnection.Open()
                 'The query for updating information in a row in the database
@@ -127,7 +124,7 @@ Public Class DonationQueries
                     command.Parameters.Add("@value", SqlDbType.Decimal).Value = value
 
                     'A set of if else statements to verifiy that data has been entered into roles that are not required by the database
-                    If validation.validateString(description) Then
+                    If validation.ValidateString(description) Then
                         command.Parameters.Add("@description", SqlDbType.Text).Value = description
                     Else
                         command.Parameters.Add("@description", SqlDbType.Text).Value = DBNull.Value
@@ -142,13 +139,9 @@ Public Class DonationQueries
 
                 'Closes the database connection
                 databaseConnection.Close()
-
-
             Catch ex As Exception
-
                 'Gets a error message 
                 errorMessage = "Error Message: " + ex.Message
-
                 'Because their is an error sets the value to true
                 databaseError = True
             End Try
@@ -162,7 +155,7 @@ Public Class DonationQueries
         End If
     End Sub
 
-    Sub deleteDonation(id As Integer)
+    Sub DeleteDonation(id As Integer)
         Try
             'Opens the database connection
             databaseConnection.Open()
@@ -171,11 +164,13 @@ Public Class DonationQueries
 
             databaseQuery = "DELETE FROM Donations WHERE Id = @id"
             'Used to set the delete query 
-            Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
-                command.Parameters.Add("@Id", SqlDbType.Int).Value = id
-                command.ExecuteNonQuery()
 
-            End Using
+            If validation.ValidateNumber(id) Then
+                Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
+                    command.Parameters.Add("@Id", SqlDbType.Int).Value = id
+                    command.ExecuteNonQuery()
+                End Using
+            End If
 
             'If their is no error from running the query the it will return false 
             databaseError = False
@@ -184,14 +179,5 @@ Public Class DonationQueries
             errorMessage = "Error Message: " + ex.Message
         End Try
     End Sub
-
-
-    Function getErrorMessage()
-        Return errorMessage
-    End Function
-
-    Function displayError()
-        Return databaseError
-    End Function
 
 End Class

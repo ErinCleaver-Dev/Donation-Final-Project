@@ -1,7 +1,7 @@
 ﻿Imports System.Windows
 
 Public Class Validation
-    Function validateString(ByVal value As String)
+    Function ValidateString(ByVal value As String)
         If value <> "" Then
             Return True
         Else
@@ -9,7 +9,8 @@ Public Class Validation
         End If
     End Function
 
-    Function validateCashValue(ByVal value As Decimal)
+    'Used for validating that decimal is over 0
+    Overloads Function ValidateNumber(ByVal value As Decimal)
         If value > 0 Then
             Return True
         Else
@@ -17,19 +18,14 @@ Public Class Validation
         End If
     End Function
 
-    Function ValidateQuery(value As String)
-        value.ToLower()
-        Dim valid As Boolean = True
-
-        Dim terms() As String = {"delete", "drop", "update", "insert", "create", "truncate", "merge", "using"}
-        For Each term As String In terms
-            If value.Contains(term) Then
-                valid = False
-            End If
-        Next
-
-        Return valid
-
+    'Used for validating that integer is over 0
+    Overloads Function ValidateNumber(ByVal value As Integer)
+        If value > 0 Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
+
 
 End Class

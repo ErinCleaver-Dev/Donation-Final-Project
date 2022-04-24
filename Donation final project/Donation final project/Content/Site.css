@@ -44,9 +44,13 @@ textarea {
 }
 
 .form h1 {
-    padding: 0px;
     margin: 0px !important;
 }
+
+h1.text-center {
+    padding: 10px;
+}
+
 
 .form {
     border: 2px solid black;
@@ -98,18 +102,30 @@ textarea {
 .mt-2 {
     margin-top: 10px;
 }
-
 .displayMessage {
     position: absolute;
     top: 30%;
     background: white;
     padding: 20px;
+    max-width: 400px;
+    text-align: center;
     border: lightgray solid 2px;
     border-radius: 25px;
     display: none;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     box-shadow: 2px 2px 1px rgb(0 0 0 / 20%);
+}
+
+.displayMessage p {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.displayMessage button {
+    margin-top: 20px;
+    width: 200px;
 }
 
 .displayMessage p {

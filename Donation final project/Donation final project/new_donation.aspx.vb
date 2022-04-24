@@ -30,7 +30,7 @@ Public Class New_donation
 
     Protected Sub bntAddDonor_Click(sender As Object, e As EventArgs) Handles bntAddDonor.Click
         Try
-            If validation.validateCashValue(txtValue.Text) Then
+            If validation.ValidateNumber(CDec(txtValue.Text)) Then
                 'creates a new instance of the donation class and assigns values
                 Dim donation As New Donation(txtDate.Text.Trim,
                                              dlNames.SelectedValue().Trim,
@@ -39,7 +39,7 @@ Public Class New_donation
                                              txtDescription.Text.Trim)
 
                 'Adds a new donation to the database
-                donationQueries.AddDonation(donation.GetDonation)
+                donationQueries.Add(donation.GetDonation)
                 If donationQueries.displayError Then
 
                     'Used to set display error message to visible
@@ -86,6 +86,7 @@ Public Class New_donation
 
         'Used to not display the message box
         displayMessage.Style.Add("display", "none")
+
     End Sub
 
     Protected Sub bntNo_Click(sender As Object, e As EventArgs) Handles bntNo.Click

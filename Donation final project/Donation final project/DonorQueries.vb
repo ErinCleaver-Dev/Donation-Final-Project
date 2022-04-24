@@ -2,19 +2,14 @@
 Imports System.Windows
 
 Public Class DonorQueries
+    Inherits Queries
     Dim databaseConnection As New SqlClient.SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename='|DataDirectory|\Donation_Database.mdf';Integrated Security=True")
-    Dim databaseQuery As String
-    Dim errorMessage As String = ""
-    Private validation As New Validation
-    Private databaseError As Boolean = True
 
     'data is from https://jsonplaceholder.typicode.com/users
 
-
-
     'Adds a Donor into the SQL Database, The only required values are first and last name.
-    Function AddDonor(ByVal donor As Dictionary(Of String, String))
-        If validation.validateString(donor.Item("name")) Then
+    Public Overrides Sub Add(dictionary As Dictionary(Of String, String))
+        If validation.ValidateString(dictionary.Item("name")) Then
             Try
                 'Opens the Connection to the Donors part of the database
                 databaseConnection.Open()
@@ -23,26 +18,26 @@ Public Class DonorQueries
                 'Used to create a new SQL command and send it to the database.
                 Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
                     'Will always be a name added to the database
-                    command.Parameters.Add("@name", SqlDbType.NChar).Value = donor.Item("name")
-                    If donor.Item("phoneNumber") <> "" Then
-                        command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = donor.Item("phoneNumber")
+                    command.Parameters.Add("@name", SqlDbType.NChar).Value = dictionary.Item("name")
+                    If dictionary.Item("phoneNumber") <> "" Then
+                        command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = dictionary.Item("phoneNumber")
                     Else
                         command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = DBNull.Value
 
                     End If
-                    If donor.Item("address") <> "" Then
-                        command.Parameters.Add("@address", SqlDbType.Text).Value = donor.Item("address")
+                    If dictionary.Item("address") <> "" Then
+                        command.Parameters.Add("@address", SqlDbType.Text).Value = dictionary.Item("address")
                     Else
                         command.Parameters.Add("@address", SqlDbType.Text).Value = DBNull.Value
 
                     End If
-                    If donor.Item("email") <> "" Then
-                        command.Parameters.Add("@email", SqlDbType.Text).Value = donor.Item("email")
+                    If dictionary.Item("email") <> "" Then
+                        command.Parameters.Add("@email", SqlDbType.Text).Value = dictionary.Item("email")
                     Else
                         command.Parameters.Add("@email", SqlDbType.Text).Value = DBNull.Value
                     End If
-                    If donor.Item("type") <> "" Then
-                        command.Parameters.Add("@type", SqlDbType.NChar).Value = donor.Item("type")
+                    If dictionary.Item("type") <> "" Then
+                        command.Parameters.Add("@type", SqlDbType.NChar).Value = dictionary.Item("type")
                     Else
                         command.Parameters.Add("@type", SqlDbType.NChar).Value = DBNull.Value
                     End If
@@ -52,19 +47,19 @@ Public Class DonorQueries
 
             Catch ex As Exception
                 errorMessage = "Error message: " + ex.Message
-                Return False
+                databaseError = False
             End Try
             errorMessage = ""
-            Return True
+            databaseError = True
         Else
             errorMessage = "Failed to Add Entry"
-            Return False
+            databaseError = False
         End If
 
-    End Function
+    End Sub
 
 
-    Function getDonors()
+    Public Overrides Function GetData()
         Try
             'Opens the database connection
             databaseConnection.Open()
@@ -88,12 +83,11 @@ Public Class DonorQueries
             errorMessage = "Error Message: " + ex.Message
             databaseError = False
             Return False
-
         End Try
     End Function
 
     Sub updateRow(ByVal id As Integer, ByVal donor As Dictionary(Of String, String))
-        If validation.validateString(donor.Item("name")) Then
+        If validation.ValidateString(donor.Item("name")) Then
             Try
                 databaseConnection.Open()
                 'The query for updating information in a row in the database
@@ -158,15 +152,11 @@ Public Class DonorQueries
 
 
     Function getNames()
-
         Try
             databaseConnection.Open()
             'Command to get IDs and Names form the database
             databaseQuery = "Select Id, name From Donors"
             Dim names As New Dictionary(Of Integer, String)
-
-
-
 
             'Used to create a new command to get the information from the donors table in the database
             Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
@@ -178,7 +168,6 @@ Public Class DonorQueries
 
                     End While
 
-
                 End Using
             End Using
 
@@ -189,16 +178,10 @@ Public Class DonorQueries
             databaseError = False
             errorMessage = "Error Message: " + ex.Message
         End Try
-
+        Return False
     End Function
 
 
-    Function getErrorMessage()
-        Return errorMessage
-    End Function
 
-    Function displayError()
-        Return databaseError
-    End Function
 
 End Class

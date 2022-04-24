@@ -6,7 +6,7 @@ Public Class Donors
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            gvDonors.DataSource = donorsQuries.getDonors()
+            gvDonors.DataSource = donorsQuries.GetData()
             If donorsQuries.displayError() = False Then
                 lblErrorMessage.Text = donorsQuries.getErrorMessage
                 lblErrorMessage.Visible = True

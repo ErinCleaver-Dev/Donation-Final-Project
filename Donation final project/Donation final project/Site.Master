@@ -56,7 +56,7 @@
                         <li><a runat="server" href="/New_donor">New Donor</a></li>
                         <li><a runat="server" href="/Donors.aspx">Update Donors</a></li>
                         <li><a runat="server" href="/New_donation.aspx">New Donation</a></li>
-
+                        <li><a runat="server" href="/Donations.aspx">Update Donations</a></li>
 
                     </ul>
                 </div>

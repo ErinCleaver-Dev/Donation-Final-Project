@@ -29,12 +29,6 @@
                     Update Donations
                 </a>
             </div>
-            <div class="col-sm-4">
-                <a href="/Reports.aspx" class="card_formated">
-                    Create Reports
-                </a>
-            </div>
-
         </div>
     </div>
 

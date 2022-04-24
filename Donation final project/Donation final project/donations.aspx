@@ -30,7 +30,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Value">
                  <ItemTemplate>
-                    <asp:TextBox ID="txtValue" DataField="value" runat="server" Text='<%# Eval("value") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtValue" CssClass="align-currency" DataField="value" runat="server" Text='<%# Eval("value") %>'></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>

@@ -160,7 +160,6 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="New_donor.aspx" />
     <Content Include="New_donation.aspx" />
-    <Content Include="Reports.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -256,13 +255,7 @@
       <DependentUpon>New_donation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Reports.aspx.designer.vb">
-      <DependentUpon>Reports.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reports.aspx.vb">
-      <DependentUpon>Reports.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
+    <Compile Include="Queries.vb" />
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>

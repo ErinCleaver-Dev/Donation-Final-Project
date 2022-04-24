@@ -10,7 +10,7 @@ Public Class Donations1
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             If Not IsPostBack Then
-                gvDonations.DataSource = donationQueries.getDontations()
+                gvDonations.DataSource = donationQueries.GetData()
                 If donationQueries.displayError() Then
                     lblErrorMessage.Text = donationQueries.getErrorMessage
                     lblErrorMessage.Visible = True
@@ -28,6 +28,7 @@ Public Class Donations1
 
 
     Protected Sub bntOk_Click(ByVal sender As Object, ByVal e As EventArgs) Handles bntOk.Click
+        Response.Redirect(HttpContext.Current.Request.Url.ToString(), True)
         displayMessage.Style.Add("display", "none")
     End Sub
     Protected Sub gvDonations_RowCommand(ByVal sender As Object, ByVal e As GridViewCommandEventArgs) Handles gvDonations.RowCommand
@@ -45,9 +46,9 @@ Public Class Donations1
 
 
 
-                If validation.validateCashValue(txtValue.Text) And validation.validateString(txtDonationType.Text) Then
+                If validation.ValidateNumber(CDec(txtValue.Text)) And validation.ValidateString(txtDonationType.Text) Then
                     'Updates the Speific Row in the donation table oof the database
-                    donationQueries.updateRow(id.Text, txtDonationType.Text, txtValue.Text, txtDescription.Text)
+                    donationQueries.UpdateRow(id.Text, txtDonationType.Text, txtValue.Text, txtDescription.Text)
 
                     'Updates the innter text of the p tag html element 
                     current_message.InnerText = "Donation updated."
@@ -74,7 +75,7 @@ Public Class Donations1
 
                 Try
 
-                    donationQueries.deleteDonation(id)
+                    donationQueries.DeleteDonation(id)
                     MessageBox.Show("Testing delete row")
                     If donationQueries.displayError Then
                         lblErrorMessage.Visible = True

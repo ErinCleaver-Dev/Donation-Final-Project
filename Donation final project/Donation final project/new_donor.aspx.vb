@@ -3,6 +3,8 @@
 Public Class New_Donor
     Inherits System.Web.UI.Page
     Dim donorQueries As New DonorQueries
+    Dim validation As New Validation
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -12,7 +14,7 @@ Public Class New_Donor
     Protected Sub bntAddDonor_Click(sender As Object, e As EventArgs) Handles bntAddDonor.Click
 
         ' Will test to make sure that values are entered into the first and last name fields.  
-        If txtName.Text = "" Then
+        If Not validation.ValidateString(txtName.Text) Then
             'Displays the error message for first name or last name if the fields are empty.  These are requied fields.  
             txtName.Style.Add("border-color", "red")
 
@@ -32,9 +34,8 @@ Public Class New_Donor
                                    txtEmail.Text.Trim(),
                                    seletType.SelectedValue.Trim())
             'Sends the data to the database
-            donorQueries.AddDonor(donor.GetDonor())
+            donorQueries.Add(donor.GetDonor())
             displayMessage.Style.Add("display", "flex")
-
         End If
 
     End Sub
