@@ -76,7 +76,6 @@ Public Class Donations1
                 Try
 
                     donationQueries.DeleteDonation(id)
-                    MessageBox.Show("Testing delete row")
                     If donationQueries.displayError Then
                         lblErrorMessage.Visible = True
                         lblErrorMessage.Text = donationQueries.getErrorMessage

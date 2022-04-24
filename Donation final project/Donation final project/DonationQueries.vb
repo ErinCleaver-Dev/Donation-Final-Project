@@ -37,7 +37,6 @@ Public Class DonationQueries
                     End If
 
                     'Executes the query command in sql
-                    MessageBox.Show("Testing Query")
 
                     command.ExecuteNonQuery()
                 End Using
@@ -46,8 +45,6 @@ Public Class DonationQueries
 
                 'Sets the error message back to nothing
                 errorMessage = ""
-
-                MessageBox.Show("Testing closing data connection")
 
                 'Closes the database connection
                 databaseConnection.Close()
@@ -159,8 +156,6 @@ Public Class DonationQueries
         Try
             'Opens the database connection
             databaseConnection.Open()
-
-            MessageBox.Show("Testing delete row")
 
             databaseQuery = "DELETE FROM Donations WHERE Id = @id"
             'Used to set the delete query 

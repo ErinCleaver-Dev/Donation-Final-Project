@@ -43,17 +43,21 @@ Public Class DonorQueries
                     End If
                     command.ExecuteNonQuery()
                 End Using
+                'Closes the database connection
                 databaseConnection.Close()
+                errorMessage = ""
+                'Will not display an error
+                databaseError = False
 
             Catch ex As Exception
+                'Displays an error message
                 errorMessage = "Error message: " + ex.Message
-                databaseError = False
+                databaseError = True
             End Try
-            errorMessage = ""
-            databaseError = True
         Else
+            'Displays an error message
             errorMessage = "Failed to Add Entry"
-            databaseError = False
+            databaseError = True
         End If
 
     End Sub

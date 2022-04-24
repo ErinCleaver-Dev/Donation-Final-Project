@@ -35,7 +35,15 @@ Public Class New_Donor
                                    seletType.SelectedValue.Trim())
             'Sends the data to the database
             donorQueries.Add(donor.GetDonor())
-            displayMessage.Style.Add("display", "flex")
+            If donorQueries.displayError Then
+                lblFailedToSubmit.Text = donorQueries.getErrorMessage
+                lblFailedToSubmit.Visible = True
+            Else
+                displayMessage.Style.Add("display", "flex")
+                lblFailedToSubmit.Visible = False
+            End If
+
+
         End If
 
     End Sub
