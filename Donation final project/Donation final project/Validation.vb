@@ -10,7 +10,7 @@ Public Class Validation
     End Function
 
     Function validateCashValue(ByVal value As Decimal)
-        If value > -1 Then
+        If value > 0 Then
             Return True
         Else
             Return False

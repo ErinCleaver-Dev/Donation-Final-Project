@@ -1,9 +1,11 @@
-﻿Public Class DonationQueries
+﻿Imports System.Windows
+
+Public Class DonationQueries
     Dim databaseConnection As New SqlClient.SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename='|DataDirectory|\Donation_Database.mdf';Integrated Security=True")
     Dim databaseQuery As String
     Dim errorMessage As String = ""
     Private validation As New Validation
-    Private databaseError As Boolean = True
+    Private databaseError As Boolean = False
 
     'data is from https://jsonplaceholder.typicode.com/users
 
@@ -19,10 +21,11 @@
                 databaseConnection.Open()
 
                 'Query use to insert a new donation.
-                databaseQuery = "INSERT INTO Donation(Date, Donor_ID, Description, type, value) VALUES(@currentDate, @id, @value, @type, @description)"
+                databaseQuery = "INSERT INTO Donations (Date, Donor_ID, Description, type, value) VALUES(@currentDate, @id, @description, @type, @value)"
 
                 'Used to create a new SQL command and send it to the database.
                 Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
+
 
 
                     'Their will always be a value for the date, id, type, and value
@@ -30,6 +33,8 @@
                     command.Parameters.Add("@id", SqlDbType.Int).Value = donation.Item("id")
                     command.Parameters.Add("@type", SqlDbType.Char).Value = donation.Item("type")
                     command.Parameters.Add("@value", SqlDbType.Decimal).Value = donation.Item("value")
+
+
 
                     'Verifiys that their is a value for description and it not it will assign NULL
                     If validation.validateString(donation.Item("description")) Then
@@ -39,16 +44,24 @@
                     End If
 
                     'Executes the query command in sql
+                    MessageBox.Show("Testing Query")
+
+
+
                     command.ExecuteNonQuery()
                 End Using
+                'returns the database error to false
+                databaseError = False
+
+                'Sets the error message back to nothing
+                errorMessage = ""
+
+                MessageBox.Show("Testing closing data connection")
 
                 'Closes the database connection
                 databaseConnection.Close()
 
-                'returns the database error to false
-                databaseError = False
             Catch ex As Exception
-
                 'Updates the error message
                 errorMessage = "Error message: " + ex.Message
 
@@ -57,8 +70,7 @@
 
             End Try
 
-            'Sets the database error to false 
-            errorMessage = ""
+
         Else
             databaseError = True
             errorMessage = "Failed to Add Entry"

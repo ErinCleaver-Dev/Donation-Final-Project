@@ -5,9 +5,8 @@ Public Class New_donation
     Inherits System.Web.UI.Page
     Dim donorsQuries As New DonorQueries
     Dim names As New Dictionary(Of Integer, String)
-    Dim validate As New Validation
-
-
+    Dim validation As New Validation
+    Dim donationQueries As New DonationQueries
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -31,7 +30,7 @@ Public Class New_donation
 
     Protected Sub bntAddDonor_Click(sender As Object, e As EventArgs) Handles bntAddDonor.Click
         Try
-            If validate.validateCashValue(txtValue.Text) Then
+            If validation.validateCashValue(txtValue.Text) Then
                 'creates a new instance of the donation class and assigns values
                 Dim donation As New Donation(txtDate.Text.Trim,
                                              dlNames.SelectedValue().Trim,
@@ -39,11 +38,24 @@ Public Class New_donation
                                              seletType.SelectedValue().Trim,
                                              txtDescription.Text.Trim)
 
+                'Adds a new donation to the database
+                donationQueries.AddDonation(donation.GetDonation)
+
+                MessageBox.Show(donationQueries.displayError)
 
 
-                lblValueErrorMessage.Visible = False
-                txtValue.Style.Add("border-color", "black")
-                displayMessage.Style.Add("display", "flex")
+                If donationQueries.displayError Then
+                    MessageBox.Show("testing error message")
+
+                    lblValueErrorMessage.Visible = True
+                    lblValueErrorMessage.Text = "Test" + donationQueries.getErrorMessage
+                Else
+                    MessageBox.Show("testing else message ")
+
+                    lblValueErrorMessage.Visible = False
+                    txtValue.Style.Add("border-color", "black")
+                    displayMessage.Style.Add("display", "flex")
+                End If
             Else
                 txtValue.Style.Add("border-color", "red")
                 lblValueErrorMessage.Visible = True
@@ -64,7 +76,6 @@ Public Class New_donation
         txtDescription.Text = ""
         dlNames.SelectedIndex = 0
         seletType.SelectedIndex = 0
-
 
         'Used to not display the message box
         displayMessage.Style.Add("display", "none")

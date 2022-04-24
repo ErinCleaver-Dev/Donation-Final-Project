@@ -34,7 +34,7 @@
                 <div class="row mx-2">
                     <asp:Label CssClass="col-sm-3 col-form-label" ID="Label8" runat="server" Text="Value:"></asp:Label>
                     <div class="col-sm-9">
-                        <asp:TextBox CssClass="form-control textbox align-currency" ID="txtValue" runat="server"></asp:TextBox>
+                        <asp:TextBox CssClass="form-control textbox align-currency" ID="txtValue" value="0.00" runat="server"></asp:TextBox>
                     </div>
                      <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblValueErrorMessage" runat="server" Text="Testing button"></asp:Label>
 

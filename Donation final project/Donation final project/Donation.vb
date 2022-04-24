@@ -25,7 +25,7 @@
     End Sub
 
     'Returns the dictionary with the donation information information
-    Function GetDonor()
+    Function GetDonation()
         Return donationInformation
     End Function
 
