@@ -17,4 +17,19 @@ Public Class Validation
         End If
     End Function
 
+    Function ValidateQuery(value As String)
+        value.ToLower()
+        Dim valid As Boolean = True
+
+        Dim terms() As String = {"delete", "drop", "update", "insert", "create", "truncate", "merge", "using"}
+        For Each term As String In terms
+            If value.Contains(term) Then
+                valid = False
+            End If
+        Next
+
+        Return valid
+
+    End Function
+
 End Class

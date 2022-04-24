@@ -40,25 +40,32 @@ Public Class New_donation
 
                 'Adds a new donation to the database
                 donationQueries.AddDonation(donation.GetDonation)
-
-                MessageBox.Show(donationQueries.displayError)
-
-
                 If donationQueries.displayError Then
-                    MessageBox.Show("testing error message")
 
+                    'Used to set display error message to visible
                     lblValueErrorMessage.Visible = True
-                    lblValueErrorMessage.Text = "Test" + donationQueries.getErrorMessage
-                Else
-                    MessageBox.Show("testing else message ")
 
+                    'Used to update the error message based on a querie
+                    lblValueErrorMessage.Text = donationQueries.getErrorMessage
+                Else
+
+                    'Used to set display error message to not be visible 
                     lblValueErrorMessage.Visible = False
+
+                    'Sets the color of the value field back to black
                     txtValue.Style.Add("border-color", "black")
+
+                    'Caues the dispaly box to apper to let the user know that the donation was added
                     displayMessage.Style.Add("display", "flex")
                 End If
             Else
+
+                'Changes the text box border to red
                 txtValue.Style.Add("border-color", "red")
+                'Set the error message to visible
                 lblValueErrorMessage.Visible = True
+
+                'Updates the text in the error message field
                 lblValueErrorMessage.Text = "Error Message: Please Enter a value greater then 0 and do not level the field blank."
             End If
         Catch ex As Exception

@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="New_donation.aspx.vb" Inherits="Donation_final_project.New_donation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <div class="form_container">
-
             <div class="form">
                 <h1 class="text-center">
                     Create A New Donation
@@ -37,7 +36,6 @@
                         <asp:TextBox CssClass="form-control textbox align-currency" ID="txtValue" value="0.00" runat="server"></asp:TextBox>
                     </div>
                      <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblValueErrorMessage" runat="server" Text="Testing button"></asp:Label>
-
                 </div>
                 <div class="center-button">
                     <asp:Button CssClass="btn btn-primary mt-2 submit_button" ID="bntAddDonor" runat="server" Text="Add Donation"/>

@@ -6,7 +6,7 @@
     Public Sub New(ByVal currentDate As String,
                    ByVal id As Integer,
                    ByVal value As Decimal,
-                   ByVal type As String,
+                   ByVal donationType As String,
                    Optional ByVal description As String = ""
                    )
 
@@ -15,7 +15,7 @@
             donationInformation.Add("currentDate", currentDate)
             donationInformation.Add("id", id)
             donationInformation.Add("value", value)
-            donationInformation.Add("type", type)
+            donationInformation.Add("donation_type", donationType)
             donationInformation.Add("description", description)
         Catch ex As Exception
             Windows.MessageBox.Show("Error Message: " + ex.Message)
