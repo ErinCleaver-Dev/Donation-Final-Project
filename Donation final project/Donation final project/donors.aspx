@@ -40,11 +40,11 @@
             </asp:TemplateField>
          </Columns>
         </asp:GridView>
-        <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblErrorMessage" runat="server" Text=""></asp:Label>
         <div id="displayMessage" class="displayMessage" runat="server">
             <p>Updated Donor information.</p>
             <asp:Button  CssClass="btn btn-primary button-shadow" ID="bntOk" runat="server" Text="Ok" />
         </div>
-    </div>
+        <asp:Label CssClass="col-sm-12 error-message"  Visible="False" ID="lblErrorMessage" runat="server" Text=""></asp:Label>
 
+    </div>
 </asp:Content>

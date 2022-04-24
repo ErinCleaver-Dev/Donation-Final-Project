@@ -54,6 +54,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="/New_donor">New Donor</a></li>
+                        <li><a runat="server" href="/Donors.aspx">Update Donor</a></li>
 
                     </ul>
                 </div>

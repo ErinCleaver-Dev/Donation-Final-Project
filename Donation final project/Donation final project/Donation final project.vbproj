@@ -202,6 +202,7 @@
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Donation.vb" />
     <Compile Include="Donations.aspx.designer.vb">
       <DependentUpon>Donations.aspx</DependentUpon>
     </Compile>

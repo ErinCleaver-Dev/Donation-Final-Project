@@ -23,15 +23,6 @@ Partial Public Class Donors
     Protected WithEvents gvDonors As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''lblErrorMessage control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblErrorMessage As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''displayMessage control.
     '''</summary>
     '''<remarks>
@@ -48,4 +39,13 @@ Partial Public Class Donors
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents bntOk As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''lblErrorMessage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblErrorMessage As Global.System.Web.UI.WebControls.Label
 End Class

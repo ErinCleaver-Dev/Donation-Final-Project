@@ -64,7 +64,7 @@ Public Class DonorQueries
     End Function
 
 
-    Function getDonors(Optional ByVal searchTerm As String = "")
+    Function getDonors()
         Try
             'Opens the database connection
             databaseConnection.Open()
@@ -90,7 +90,6 @@ Public Class DonorQueries
             Return False
 
         End Try
-
     End Function
 
     Sub updateRow(ByVal id As Integer, ByVal donor As Dictionary(Of String, String))
@@ -98,15 +97,16 @@ Public Class DonorQueries
             Try
                 databaseConnection.Open()
                 'The query for updating information in a row in the database
-                databaseQuery = "Update Donors (name, PhoneNumber, Address, email, type) VALUES(@name, @phoneNumber, @address, @email, @type) WHERE Id=@Id"
+                databaseQuery = "Update Donors SET name = @name, PhoneNumber = @phoneNumber, Address = @address, email = @email, type = @type WHERE Id=@Id"
 
-
+                'Runs the sql command and updates the donors row
                 Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
-
 
 
                     command.Parameters.Add("@Id", SqlDbType.Int).Value = id
                     command.Parameters.Add("@name", SqlDbType.NChar).Value = donor.Item("name")
+
+                    'A set of if else statements to verifiy that data has been entered into roles that are not required by the database
                     If donor.Item("phoneNumber") <> "" Then
                         command.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = donor.Item("phoneNumber")
                     Else
@@ -128,21 +128,70 @@ Public Class DonorQueries
                         command.Parameters.Add("@type", SqlDbType.NChar).Value = DBNull.Value
                     End If
 
-                    databaseError = "True"
+                    'Runs the Query Command
+                    command.ExecuteNonQuery()
+
+                    'Because thier is no error sets the value to true
+                    databaseError = True
                 End Using
 
                 databaseConnection.Close()
 
 
             Catch ex As Exception
+
+                'Gets a error message 
                 errorMessage = "Error Message: " + ex.Message
+
+                'Because their is an error sets the value to false 
                 databaseError = False
             End Try
         Else
+            'Gets a error message 
             errorMessage = "Failed to update record."
+
+            'Because their is an error sets the value to false 
+
             databaseError = False
         End If
     End Sub
+
+
+    Function getNames()
+
+        Try
+            databaseConnection.Open()
+            'Command to get IDs and Names form the database
+            databaseQuery = "Select Id, name From Donors"
+            Dim names As New Dictionary(Of Integer, String)
+
+
+
+
+            'Used to create a new command to get the information from the donors table in the database
+            Using command As New SqlClient.SqlCommand(databaseQuery, databaseConnection)
+                Using reader As SqlClient.SqlDataReader = command.ExecuteReader()
+                    'Uses a while loop with reader to assisgn data to the Dictionary.
+                    While reader.Read()
+
+                        names.Add(reader.GetInt32(0), reader.GetString(1))
+
+                    End While
+
+
+                End Using
+            End Using
+
+            'Closes the database connection
+            databaseConnection.Close()
+            Return names
+        Catch ex As Exception
+            databaseError = False
+            errorMessage = "Error Message: " + ex.Message
+        End Try
+
+    End Function
+
 
     Function getErrorMessage()
         Return errorMessage
